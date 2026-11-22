@@ -207,6 +207,9 @@ class UserRole(commands.Cog):
 			Nullify.escape_all(role.name),
 			str(reaction.emoji)
 		))
+		# Mirror the reaction on the watched message so members can click it
+		try: await m.add_reaction(reaction.emoji)
+		except Exception: pass
 
 	@commands.command()
 	async def rrdel(self, ctx, *, role_name_or_id = None):
